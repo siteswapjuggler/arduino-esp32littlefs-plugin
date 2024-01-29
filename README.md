@@ -10,6 +10,7 @@
 - You can use either LITTLEFS or SPIFFS but not both simultaneously on given Arduino project
 - The LITTLEFS library for arduino-esp32 core is [here](https://github.com/lorol/LITTLEFS)
 - A PR to embed it to esp32 core is made, too. See the [PR status here](https://github.com/espressif/arduino-esp32/pull/4096) 
+- Now compatible with new boards like ESP32-C3
 
 ## Installation
 
@@ -39,14 +40,15 @@ On the OS X create the tools directory in ~/Documents/Arduino/ and unpack the fi
 
 ## Credits and license
 
-- This work is based on the [original tool](https://github.com/me-no-dev/arduino-esp32fs-plugin/ ) Copyright (c) 2015 Hristo Gochkov (hristo at espressif dot com)
+- This work is based on the [original tool](https://github.com/lorol/arduino-esp32littlefs-plugin) 
+- Bases itself on the [original tool](https://github.com/me-no-dev/arduino-esp32fs-plugin/ ) Copyright (c) 2015 Hristo Gochkov (hristo at espressif dot com)
 - Licensed under GPL v2 ([text](LICENSE))
 - ESP8266 variant of same tool, made by [**earlephilhower** is here](https://github.com/earlephilhower/arduino-esp8266littlefs-plugin)
 - ESP8266 variant of LittleFS libraty, same author: [see here](https://github.com/esp8266/Arduino/tree/master/libraries/LittleFS)
 
 ## Quick building on Win:
 
-- Install Java JDK 
+- Install Java JDK 8 (as per 2024 jdk-8u391)
 - Find the path of javac.exe and jar.exe
 - Edit make_win.bat accordingly
 - Copy files **arduino-core.jar , commons-codec-1.7.jar , pde.jar**  from your Arduino IDE installation to the folder where is located **make_win.bat**

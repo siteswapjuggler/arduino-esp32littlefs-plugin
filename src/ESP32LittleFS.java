@@ -367,6 +367,7 @@ public class ESP32LittleFS implements Tool {
       else
         sysExec(new String[]{espota.getAbsolutePath(), "-i", serialPort, "-p", "3232", "-s", "-f", imagePath});
     } else {
+	  String mcu = BaseNoGui.getBoardPreferences().get("build.mcu");
       String flashMode = BaseNoGui.getBoardPreferences().get("build.flash_mode");
       String flashFreq = BaseNoGui.getBoardPreferences().get("build.flash_freq");
       System.out.println("[LITTLEFS] address: "+spiStart);
@@ -376,9 +377,9 @@ public class ESP32LittleFS implements Tool {
       System.out.println("[LITTLEFS] freq   : "+flashFreq);
       System.out.println();
       if(esptool.getAbsolutePath().endsWith(".py"))
-        sysExec(new String[]{pythonCmd, esptool.getAbsolutePath(), "--chip", "esp32", "--baud", uploadSpeed, "--port", serialPort, "--before", "default_reset", "--after", "hard_reset", "write_flash", "-z", "--flash_mode", flashMode, "--flash_freq", flashFreq, "--flash_size", "detect", ""+spiStart, imagePath});
+        sysExec(new String[]{pythonCmd, esptool.getAbsolutePath(), "--chip", mcu, "--baud", uploadSpeed, "--port", serialPort, "--before", "default_reset", "--after", "hard_reset", "write_flash", "-z", "--flash_mode", flashMode, "--flash_freq", flashFreq, "--flash_size", "detect", ""+spiStart, imagePath});
       else
-        sysExec(new String[]{esptool.getAbsolutePath(), "--chip", "esp32", "--baud", uploadSpeed, "--port", serialPort, "--before", "default_reset", "--after", "hard_reset", "write_flash", "-z", "--flash_mode", flashMode, "--flash_freq", flashFreq, "--flash_size", "detect", ""+spiStart, imagePath});
+        sysExec(new String[]{esptool.getAbsolutePath(), "--chip", mcu, "--baud", uploadSpeed, "--port", serialPort, "--before", "default_reset", "--after", "hard_reset", "write_flash", "-z", "--flash_mode", flashMode, "--flash_freq", flashFreq, "--flash_size", "detect", ""+spiStart, imagePath});
     }
   }
 
